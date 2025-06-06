@@ -10,7 +10,7 @@ Intro - In progress.
 
 Tools - Introduction to the tools used throughout the course. Not a required watch if you already have a Postman/Insomnia/SoapUI project for testing your application.
 
-Continous Monitoring - Covers the first section of the checklist. These items should be in the back of your mind as you continue testing the other checklist items.
+Continuous Monitoring - Covers the first section of the checklist. These items should be in the back of your mind as you continue testing the other checklist items.
 
 Response Headers - Covers response header risks and identifying common misconfigurations.
 
