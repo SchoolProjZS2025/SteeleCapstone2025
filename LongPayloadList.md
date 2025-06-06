@@ -1,4 +1,3 @@
-
 ## Continuous Review
 Please continue to evaluate the Continous Review section and response headers sections of the checklist as you go through the entire assessment. We encourage app teams to update the checklist and Payload lists with language specific links and company policies to ensure future developers follow the companies requirements.
 ### Verbose Error Messages
@@ -44,12 +43,16 @@ Do not set Access-Control-Allow-Origin to wildcard or reflect arbitrary origins/
 
 https://www.freecodecamp.org/news/exploiting-cors-guide-to-pentesting/
 
+
 ## Cookies
 All cookies should have the following attributes: Secure, HttpOnly, SameSite: lax or strict.
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
 
-This payload list will include a diverse set of basic payloads for each attack type with the goal of identifying the vulnerability using the least amount of attempts. For a longer list of payloads, see the LongPayloadList document or review the sources below. While this payload list was hand selected from my own personal notes(generated over the course of 3 years), most of the payloads can be found in the sources below.
+
+This payload list is an advanced version of the short payload list. Please watch the video series before attempting these exploits. This list includes malicious input with a lower success rate and, in some cases, require a better understandinng of the vulnerable parameter.
+
+While this list was curated from select payloads from my own personal notes(generated over the course of 3 years), most of the payloads can be found in the sources below. Please see the youtube video series where sources are provided in situations where we use direct content from a third party.
 
 [https://github.com/swisskyrepo/PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
 
@@ -58,13 +61,13 @@ https://book.hacktricks.wiki/en/index.html
 https://portswigger.net/web-security/all-topics
 
 
+## Cross-Site Scripting (XSS)
 
-## Cross-Site Scripting (XSS):
+Best resource for learning more about this vulnerability: [https://portswigger.net/web-security/cross-site-scripting](https://portswigger.net/web-security/cross-site-scripting)
 
-[https://portswigger.net/web-security/cross-site-scripting](https://portswigger.net/web-security/cross-site-scripting)
+Best payload list: https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection
 
 Enter the following payloads into user input fields and see how they are reflected in the application. If the user input is reflected back unencoded and unfiltered, especially in javascript, then XSS is likely.
-
 ```
 <b>test</b> 
 <script>alert(1)</script>
@@ -82,7 +85,7 @@ alert`1`
 ‘-alert()-’
 ```
 
-**Polyglot payloads**
+***Polyglot payloads***
 
 Please note that these are much louder payloads, meaning they are more likely to raise alarm from your cyber security department.
 
@@ -94,9 +97,7 @@ Mathias Karlsson
 " onclick=alert(1)//<button ‘ onclick=alert(1)//> */ alert(1)//
 ```
 
-
 ## SQL Injection
 Review the following site for a cheat sheet showing specific requirements and payloads for the most common databases. This will help tailor the following payloads to your environment. For example, if your application uses MySQL, replace the `--` in the commands below with `#`.
 
 https://portswigger.net/web-security/sql-injection/cheat-sheet
-
