@@ -1,4 +1,4 @@
-# GTSchoolProj
+## Web Application Penetration Testing Crash Course For Developers
 
 This GitHub repo contains all necessary material utilized in the following developer focused web application penetration testing course:
 https://www.youtube.com/watch?v=oNDEU_uNtzI&list=PLqPCUirqsN_x_seY51DiivfV-CjgJDKUp
