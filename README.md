@@ -4,7 +4,7 @@ This GitHub repo contains all necessary material utilized in the following devel
 https://www.youtube.com/watch?v=oNDEU_uNtzI&list=PLqPCUirqsN_x_seY51DiivfV-CjgJDKUp
 
 
-Quick Breakdown of the video series:
+Quick breakdown of the video series:
 
 Intro - In progress.
 
