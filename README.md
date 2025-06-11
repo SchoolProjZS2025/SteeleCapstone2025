@@ -1,7 +1,13 @@
-## Web Application Penetration Testing Crash Course For Developers
+# Web Application Penetration Testing Crash Course For Developers
 
 This GitHub repo contains all necessary material utilized in the following developer focused web application penetration testing course:
 https://www.youtube.com/watch?v=oNDEU_uNtzI&list=PLqPCUirqsN_x_seY51DiivfV-CjgJDKUp
+
+The items in this course are not covered in order of risk rating. The ratings provided in the checklist were mostly generating using CVSS V3.1 average scores for 2025 CVEs. Please use the following tools to create ratings that more accurately represent your application and companies risk appetite:
+
+https://owasp.org/www-community/OWASP_Risk_Rating_Methodology
+
+https://www.first.org/cvss/calculator/4-0
 
 
 Quick breakdown of the video series:
