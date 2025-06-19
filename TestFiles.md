@@ -2,12 +2,11 @@ We will not be hosting files because most people cannot download vulnerable file
 Please understand how these files work before utilizing them.
 
 
-**Clickjacking**
+### Clickjacking
 Put the link to your site into the iframe section at the bottom of each file, then save as an html file. Log in to your application, then double click on the following html file so that it opens in the same browser. If you can see your website in the iframe, this proves your application is vulnerable to clickjacking.
 The following files come from PortSwigger: https://portswigger.net/web-security/clickjacking
 
-Basic:
-test1.html
+**Basic: test1.html**
 ```
 <style>
     iframe {
@@ -28,8 +27,7 @@ test1.html
 <iframe src="https://www.yourSiteHere.com/dashboard"></iframe>
 ```
 
-Frame busting:
-test2.html
+**Frame busting: test2.html**
 ```
 <style>
     iframe {
@@ -55,7 +53,7 @@ src="https://www.yourSiteHere.com/dashboard"></iframe>
 
 Before testing the files below, try uploading calc.exe from a Windows computer. If it successfully uploads, start the remediation procedures. If calc.exe does not upload, or if you want to test further, attempt to upload the files below.
 
-**XXE**
+### XXE
 Example:
 
 Linux reflected:
@@ -66,7 +64,7 @@ Windows reflected:
 
 
 
-**XSS**
+### XSS
 SVG file:
 
 

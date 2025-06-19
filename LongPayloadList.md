@@ -6,7 +6,7 @@ https://www.first.org/cvss/calculator/4-0
 
 ## Continuous Review
 Please continue to evaluate the continuous review section and response headers sections of the checklist throughout the entire assessment. We encourage app teams to update the checklist and payload lists with language specific links and relevant company policies to ensure future developers follow the organization's requirements.
-### Verbose Error Messages
+### Error Messages are Properly Handled
 Error messages should be short and generic. Do not show stack traces or informative messages to the user.
 ### Autocomplete Disabled on Sensitive Input Fields
 Emails, password, challenge questions, and other sensitive information should have autocomplete="off".
@@ -26,7 +26,7 @@ https://securityheaders.com/
 
 https://hackertarget.com/http-header-check/
 
-### Content-security-policy 
+### Content-Security-Policy 
 The CSP should include script-src and default-src. Do not use unsafe directives, such as unsafe-inline or unsafe-eval. Do not include wildcards in the CSP unless they are used in the subdomain of a trusted site. 
 
 Quick Guide: https://content-security-policy.com/
@@ -55,7 +55,7 @@ All cookies should have the following attributes: Secure, HttpOnly, SameSite: la
 
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
 
-
+## Payloads Required Section
 This payload list is an advanced version of the short payload list. Please watch the video series before attempting these exploits as some of the payloads have a lower success rate and require a deeper understanding of the application's behavior and vulnerable parameters.
 
 While this list was curated from select payloads from my own personal notes(generated over the course of 3 years), most of the payloads can be found in the sources below. Please see the youtube video series where sources are provided in situations where we use direct content from a third party.
