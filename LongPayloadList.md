@@ -6,23 +6,42 @@ https://www.first.org/cvss/calculator/4-0
 
 ## Continuous Review
 Please continue to evaluate the continuous review section and response headers sections of the checklist throughout the entire assessment. We encourage app teams to update the checklist and payload lists with language specific links and relevant company policies to ensure future developers follow the organization's requirements.
+
 ### Error Messages are Properly Handled
 Error messages should be short and generic. Do not show stack traces or informative messages to the user.
+
+Resources: https://cheatsheetseries.owasp.org/cheatsheets/Error_Handling_Cheat_Sheet.html
+
 ### Autocomplete Disabled on Sensitive Input Fields
 Emails, password, challenge questions, and other sensitive information should have autocomplete="off".
+
+Resources: https://www.w3schools.com/howto/howto_html_autocomplete_off.asp
+
 ### Sensitive Information is Masked
 Sensitive information should be masked to mitigate shoulder surfing attacks.
+
+Resources: https://labex.io/tutorials/javascript-mask-a-value-28489
+
 ### Sensitive Information Not in URL
 Do not send sensitive information in GET request parameters.
+
+Resources: https://cwe.mitre.org/data/definitions/598.html
+
 ### Unneccessary Methods are Disabled
 Do not allow unsafe methods such as Trace or Connect on any endpoint. Disable DELETE, POST, etc. if not needed on the endpoint.
+
+Resources: https://cyberwhite.co.uk/http-verbs-and-their-security-risks/
+
 ### HTTP Disabled
 Enforce HTTPS for all connections.
+
+Resources: https://blog.matrixpost.net/redirect-from-http-to-https-using-the-iis-url-rewrite-module/
 
 ## Response Headers
 The following tools will check the response headers of your application and report on any insecurities or misconfigurations. We highly recommend checking the response headers manually because these tools may not follow the requirements of your organization. Additionally, most of these tools are limited to unauthenticated checks, meaning that sensitive authenticated responses will not be evaluated.
 
-https://securityheaders.com/
+
+Resources: https://securityheaders.com/
 
 https://hackertarget.com/http-header-check/
 
@@ -32,28 +51,37 @@ The CSP should include script-src and default-src. Do not use unsafe directives,
 Quick Guide: https://content-security-policy.com/
 
 Evaulation Tool: https://csp-evaluator.withgoogle.com/
+
 ### Strict-Transport-Security
 The Strict-Transport-Security response header should contain the max-age directive set to 1 year or greater and the includeSubdomains directive. If the application is externally available, include the Preload directive.
 
 Example: Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+Resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security
 
 ### Caching
 **Cache-Control** - Set the cache-control response header to include the “no-store” flag in all responses.
 
 **Expires** - Set the Expires header to a date in the past, or zero, in all responses.
 
+Resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control
+
+https://www.rfc-editor.org/rfc/rfc9111.html"
+
 ### Information Leak Headers
 Remove unneccessary response headers, such as: Server, X-Powered-By, X-AspNet-Version.
+
+Resources: https://support.waters.com/KB_Inf/Other/WKB202501_How_to_disable_the_Server_HTTP_header_in_Microsoft_IIS
 
 ### CORS Headers
 Do not set Access-Control-Allow-Origin to wildcard or reflect arbitrary origins/subdomains.
 
-https://www.freecodecamp.org/news/exploiting-cors-guide-to-pentesting/
+Resources: https://www.freecodecamp.org/news/exploiting-cors-guide-to-pentesting/
 
 ## Cookies
 All cookies should have the following attributes: Secure, HttpOnly, SameSite: lax or strict.
 
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
+Resources: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie
 
 ## Payloads Required Section
 This payload list is an advanced version of the short payload list. Please watch the video series before attempting these exploits as some of the payloads have a lower success rate and require a deeper understanding of the application's behavior and vulnerable parameters.
@@ -259,3 +287,76 @@ All "whoami" text can be replaced with "sleep 3."
 
  && sleep 3 &&
 ```
+
+## Login Page
+### Weak Passwords Not Allowed
+Enforce strong password policies.
+
+Resources: https://www.cisa.gov/secure-our-world/use-strong-passwords
+
+### User Enumeration Not Possible
+Ensure the application does not reflect different messages for valid or invalid users.
+
+Resources: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/03-Identity_Management_Testing/04-Testing_for_Account_Enumeration_and_Guessable_User_Account
+
+
+### Account Lockout Enabled
+Lock user accounts after X number of failed login attempts to prevent brute-force attacks.
+
+Resources: https://owasp.org/www-community/controls/Blocking_Brute_Force_Attacks
+
+### Multi-Factor Authentication in Use
+Require multi-factor authentication at login.
+
+Resources: https://auth0.com/blog/different-ways-to-implement-multifactor/
+
+
+## Session Management
+
+### Session Fixation Not Possible
+Issue fresh session cookies after login.
+
+Resources: https://owasp.org/www-community/controls/Session_Fixation_Protection
+
+### Session dies after X minutes
+Invalidate session after X number of minutes.
+
+Resources: https://learn.microsoft.com/en-us/office/vba/access/concepts/miscellaneous/detect-user-idle-time-or-inactivity
+
+### Logout Button Works
+Invalidate session upon logout.
+
+Resources: https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html
+
+### All functions require authentication
+Review all application pages/functions to ensure only valid users can access the page and execute functions.
+
+Resources: https://learn.microsoft.com/en-us/aspnet/core/security/authorization/simple?view=aspnetcore-9.0
+
+
+## Miscellaneous
+### Clickjacking
+Use X-Frame-Options: DENY or frame-ancestors CSP directive to prevent clickjacking attacks.
+
+Resources: https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html
+
+### File upload
+Only allow necessary file types. Virus scan each file and rename upon upload.
+
+Resources: https://github.com/dilaouid/shitshit/blob/main/backend-good-practices-security/FILE_UPLOAD.md
+
+https://github.gatech.edu/zsteele3/ZS6727Summer2025/blob/main/TestFiles.md
+
+### Horizontal Privilege Escalation-IDOR
+Ensure users cannot access resources that belong to other users.
+
+Resources: https://purplesec.us/learn/privilege-escalation-attacks/
+
+https://portswigger.net/web-security/access-control"
+
+### Vertical Privilege Escalation-MFLAC
+Ensure unauthorized users cannot execute privileged functionality.
+
+Resources: https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/05-Authorization_Testing/03-Testing_for_Privilege_Escalation
+
+https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html
